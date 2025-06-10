@@ -1,0 +1,29 @@
+<app-nav></app-nav>
+<div class="w-screen h-screen bg-pink-100 text-white border-1">
+  <h1 class="text-4xl text-center font-bold m-2 text-black">Selecciona tu Aventura</h1>
+  <p class="text-center mb-4 text-gray-500">Que te gustaría explorar hoy?</p>
+
+  <div class="flex flex-wrap justify-center gap-3">
+
+    <app-card (click)="pokemonAleatorio()"
+      clase="w-[400px] max-w-sm border-5 border-yellow-300 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 bg-gradient-to-r from-yellow-300 to-yellow-700 cursor-pointer "
+      icono="fas fa-dice text-white text-5xl mt-4" titulo="Pokémon Aleatorio"
+      descripcion="Descubre un sorprendente Pokémon">
+    </app-card>
+
+
+
+    <app-card (click)="pokemonPorTipo()" clase="w-[400px] max-w-sm border-5 border-blue-300 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700
+    bg-gradient-to-r from-blue-300 to-blue-700 cursor-pointer" icono="fas fa-th text-white text-5xl mt-4"
+      titulo="Pokémon Por Tipo" descripcion="Explora todos los tipos de Pokémon">
+    </app-card>
+
+
+
+    <app-card (click)="buscarPokemon()" clase="w-[400px] max-w-sm border-5 border-pink-300 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700
+    bg-gradient-to-r from-pink-300 to-pink-700 cursor-pointer" icono="fas fa-search text-white text-5xl mt-4"
+      titulo="Buscar Pokémon" descripcion="Busca tu Pokémon Favorito">
+    </app-card>
+
+  </div>
+</div>

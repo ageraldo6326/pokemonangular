@@ -1,0 +1,70 @@
+<app-nav></app-nav>
+<div class="bg-blue-100 min-h-screen p-4">
+  <h1 class="text-black text-5xl text-center m-5">Buscar Pokémon</h1>
+
+  <div class="text-center">
+    <div class="flex justify-center my-4">
+      <input (input)="ocultar()" (keydown.enter)="verPokemonPorNombre()" type="text" name="nombre" id="nombre"
+        [(ngModel)]="nombre" class="bg-gray-50 border-3 border-orange-300 text-gray-900 text-sm rounded-lg
+         focus:ring-blue-500 focus:border-blue-500 block w-64 p-2.5 dark:bg-gray-700 w-[450px]
+          dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+           dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    </div>
+    <button type="button" (click)="irAlMenu()"
+      class="cursor-pointer text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 w-50">
+      ⬅️ Ir al Menu
+    </button>
+
+    <button (click)="verPokemonPorNombre()" type="submit"
+      class="text-white bg-amber-600 hover:bg-amber-500 focus:outline-none focus:ring-4 focus:ring-amber-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-amber-900 cursor-pointer">
+      Buscar Pokémon por Nombre
+    </button>
+  </div>
+
+  <div *ngIf="cargando" class="flex justify-center items-center mt-10">
+    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+  </div>
+
+  @if(pokemonNoEncontrado) {
+
+  <div class="flex justify-center">
+    <div class="p-4 mb-4 text-sm text-white rounded-lg bg-red-800 dark:bg-gray-800 dark:text-red-400" role="alert">
+      <span class="font-medium">😔</span> Pokémon no encontrado.
+    </div>
+  </div>
+
+  }
+
+  @if (mostrar) {
+  <div class="flex justify-center mt-10">
+    <div class="max-w-sm bg-white border-yellow-300 border-5 rounded-lg shadow-sm">
+      <div class="text-center">
+        <img class="rounded-t-lg w-[250px] mx-auto" src="{{ pokemon?.sprites?.other?.home?.front_default }}" alt="" />
+      </div>
+      <div class="p-5">
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+            {{pokemon?.name}}
+          </h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {{ descripcionPokemon?.flavor_text_entries[0]?.flavor_text }}
+        </p>
+
+        <div
+          class="my-1 text-white text-center text-xl bg-pink-500 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800">
+          {{ pokemon.types[0].type.name }}
+        </div>
+
+        @if (pokemon.types[1].type.name) {
+        <div
+          class="my-1 text-white text-center text-xl bg-amber-500 hover:bg-amber-800 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-amber-600 dark:hover:bg-amber-700 focus:outline-none dark:focus:ring-amber-800">
+          {{ pokemon.types[1].type.name }}
+        </div>
+        }
+
+      </div>
+    </div>
+  </div>
+  }
+</div>
