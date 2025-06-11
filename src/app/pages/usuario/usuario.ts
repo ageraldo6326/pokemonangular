@@ -15,7 +15,9 @@ export class Usuario {
   constructor(private router: Router) {
     this.usuario = localStorage.getItem('usuario') || '';
   }
-
+  irAlMenu() {
+    this.router.navigate(['/menu']);
+  }
 
   logout() {
     this.router.navigate(['/logout']);
